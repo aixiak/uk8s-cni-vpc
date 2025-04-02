@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "main"
+      - "test/uni-secondary-ip"
   pull_request:
     branches:
       - "main"

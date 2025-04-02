@@ -129,16 +129,16 @@ func allocateSecondaryIP(client *uapi.ApiClient, macAddr string, podName, podNS,
 	}
 
 	req := cli.NewAllocateSecondaryIpRequest()
-	req.Mac = &macAddr
-	ObjectId, err := uapi.GetObjectIDForSecondaryIP()
-	if err != nil {
-		ObjectId = client.InstanceID()
-	}
+	// ObjectId, err := uapi.GetObjectIDForSecondaryIP()
+	// if err != nil {
+	// 	ObjectId = client.InstanceID()
+	// }
 
-	req.ObjectId = ucloud.String(ObjectId)
+	req.Mac = ucloud.String("52:54:00:10:1B:7F")
 	req.Zone = ucloud.String(client.AvailabilityZone())
 	req.VPCId = ucloud.String(client.VPCID())
-	req.SubnetId = ucloud.String(client.SubnetID())
+	req.SubnetId = ucloud.String("subnet-kgdkv1kylvb")
+	req.ObjectId = ucloud.String("uni-1a92vsqicro5")
 
 	resp, err := cli.AllocateSecondaryIp(req)
 	if err != nil {
